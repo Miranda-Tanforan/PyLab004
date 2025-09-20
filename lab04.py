@@ -52,23 +52,23 @@ def draw_eye(t, x, y, length):
     draw_polygon(t, 3, length)
     t.end_fill()
 
-def draw_pumpkin(t, x, y, radius):
+def draw_pumpkin(t, x, y, radius, length):
     """Draws a pumpkin (orange circle) at the given (x, y) location with a green stem."""
     t.penup()
     t.goto(x, y)
     t.pendown()
-    t.fillcolor("orange")
-    t.begin_fill()
+    #t.fillcolor("orange")
+    #t.begin_fill()
     t.circle(radius)
     t.end_fill()
 
     # Drawing the stem#
-    t.fillcolor("green")
-    t.begin_fill()
+    #t.fillcolor("green")
+    #t.begin_fill()
     t.penup()
     base = radius // 5
     side = radius // 2
-    t.goto(x+base//2,radius*.99)
+    t.goto(x+base//2,y+radius*2)
     t.pendown()
     t.left(90)  # Point upwards
     t.forward(side)
@@ -79,11 +79,16 @@ def draw_pumpkin(t, x, y, radius):
     t.left(90)
     t.forward(base)
     t.end_fill()
-    draw_eye(t, x-r//2, y+(2*r)-r//1.5,35)
-    #draw_eye(t, x - 50, y + 125, 35)
-    #draw_eye(t, x + 15, y + 125, 35)
-    draw_nose = draw_eye(t, x - 17, y + 85, 35)
-    #draw_mouth(t, x - 50, y + 75, 100)
+    #x= 0
+    #y= -100
+    #r= 100
+    #l= 35
+    #           0-100, -100+(2*100)-(100/1.5), L
+    draw_eye(t, x-radius//2, y+(2*radius)-(radius//1.3), length)
+    draw_eye(t, (x +radius//2) - length, y +(2*radius)-(radius//1.3), length)
+    #nose
+    draw_eye(t, x - length/2, y+radius-length//2, length)
+    draw_mouth(t, x - radius//2, y + radius*.65, radius)
 
 def draw_polyline(n, length, angle):  # This is really generalized and flexible now.
      for i in range(n):
@@ -112,6 +117,7 @@ def draw_mouth(t, x, y, width):
         t.right(120)
     t.right(30)
     draw_arc(width//2, 190)
+    t.left(10)
     t.end_fill()
 
 def draw_star(t, x, y, size):
@@ -134,25 +140,30 @@ def draw_sky(t, num_stars):
         size = random.randint(10, 30)
         draw_star(t, x, y, size)
 
+def draw_jack(x,y,r):
+    #x=-200
+    #y=-100
+    #r = 80
+    l= .33 * r
+    draw_pumpkin(t,x,y,r,l)
+
+#t = turtle.Turtle()
+
+#t.speed(10)  # 1 is slow, 10 is fast, 0 is instant
+#t.color('black')
+#t.shape('turtle')
 
 
-t = turtle.Turtle()
+#screen = turtle.Screen()
+#screen.bgcolor("white")
+#screen.setup(width=600, height=600)
 
-t.speed(0)  # 1 is slow, 10 is fast, 0 is instant
-t.color('black')
-t.shape('turtle')
-
-
-screen = turtle.Screen()
-screen.bgcolor("black")
-screen.setup(width=600, height=600)
-
-t.clear()
+#t.clear()
 
 """PUT YOUR DRAW CALLS TO FUNCTIONS HERE"""
 #draw_axis()
 
-draw_ground(-300,-100)
+#draw_ground(-300,-100)
 
 # Example usage
 #draw_star(t, -100, 150, 30)  # Star in the sky
@@ -160,19 +171,26 @@ draw_ground(-300,-100)
 
 
 
-#draw_sky(t, 20)  # Draw 20 stars
+#draw_sky(t, 10)  # Draw 20 stars
+
+#draw_mouth(t, 0, 0,200)
+#draw_jack(-200,-100,100)
+#draw_jack(-200,-100,100)
+#x=-200
+#y=-100
+#r = 80
+#l= .33 * r
+#draw_pumpkin(t,x,y,r,l)
 
 
-x=-200
-y=-100
-r = 100
-draw_pumpkin(t,x,y,r)
+
 #draw_eye(t,x-50,y+125,35)
 #draw_eye(t,x+15, y+125,35)
 #draw_nose = draw_eye(t,x-17,y+85,35)
 #draw_mouth(t,x-50,y+75,100)
 
 #draw_pumpkin(t,x+200,y,100)
+
 
 
 
