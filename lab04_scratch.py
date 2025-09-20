@@ -163,7 +163,7 @@ def draw_jack(x,y,r):
 """PUT YOUR DRAW CALLS TO FUNCTIONS HERE"""
 #draw_axis()
 
-#draw_ground(-300,-100)
+draw_ground(-300,-100)
 
 # Example usage
 #draw_star(t, -100, 150, 30)  # Star in the sky

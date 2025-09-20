@@ -151,8 +151,8 @@ def draw_star(t, x, y, size):
 def draw_sky(t, num_stars):
     """Draws a starry sky with the given number of stars."""
     for _ in range(num_stars):
-        x = random.randint(0, 300)
-        y = random.randint(150, 300)
+        x = random.randint(-300, 300)
+        y = random.randint(100, 300)
         size = random.randint(10, 30)
         draw_star(t, x, y, size)
 
@@ -196,9 +196,10 @@ t.clear()
 #draw_axis()
 
 draw_ground(-300,-100)
-draw_jack_o_lantern(t,-300, -200,300)
-draw_army_large(t,4)
-draw_army_small(t,10)
+draw_jack_o_lantern(t,-200, -200,100)
+draw_jack_o_lantern(t, 0,-200,80)
+draw_jack_o_lantern(t, 150,-200,50)
+
 draw_sky(t,20)
 
 turtle.exitonclick()
