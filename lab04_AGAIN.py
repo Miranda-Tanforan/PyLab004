@@ -172,6 +172,7 @@ def draw_army_large(t, num_jacks):
         #y = random.randint(-300, -200)
         size = random.randint(80, 100)
         draw_jack_o_lantern(t, x, y, size)
+
 def draw_army_small(t, num_jacks):
     for _ in range(num_jacks):
         x = random.randint(-100, 300)
